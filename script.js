@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/tasks';
+const apiUrl = 'https://todolist-sarah.netlify.app/';
 
 async function loadTasks() {
     const response = await fetch(apiUrl);
