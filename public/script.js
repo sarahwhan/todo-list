@@ -3,7 +3,7 @@ const apiUrl = 'https://todo-list-2fgq.onrender.com/api/tasks';  // Backend API 
 // Function to load tasks from the backend API
 async function loadTasks() {
     const response = await fetch(apiUrl);
-    const tasks = await response.json();
+    const tasks = await response.json();  // This should now return an array of task objects
 
     const taskList = document.getElementById('task-list');
     taskList.innerHTML = '';
@@ -21,8 +21,8 @@ async function loadTasks() {
 
         // Task text
         const taskText = document.createElement('span');
-        taskText.textContent = task.task;
-        if (task.completed) taskText.classList.add('completed'); // Add 'completed' class if task is marked
+        taskText.textContent = task.task;  // Now this should work correctly
+        if (task.completed) taskText.classList.add('completed');  // Mark as completed if necessary
         li.appendChild(taskText);
 
         // Delete button to remove task

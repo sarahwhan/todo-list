@@ -17,14 +17,15 @@ app.use(express.json());
 
 // API endpoint to get all tasks
 app.get('/api/tasks', (req, res) => {
-    res.json(tasks);
+    res.json(tasks); // Return the list of tasks
 });
 
 // API endpoint to add a new task
 app.post('/api/tasks', (req, res) => {
-    const { task } = req.body;
+    const { task } = req.body;  // Extract 'task' from the request body
     if (task) {
-        tasks.push(task);
+        // Store task as an object with 'task' and 'completed' properties
+        tasks.push({ task, completed: false });
         res.status(201).json({ message: 'Task added!', tasks });
     } else {
         res.status(400).json({ message: 'Task content required' });
