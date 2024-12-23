@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple and intuitive to-do list with Pomodoro timer">
+    <meta name="author" content="Your Name">
     <title>Modern To-Do List</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1 class="header">to-do today</h1>
+        <h1 class="header">To-Do Today</h1>
         <div class="input-container">
-            <input type="text" id="new-task" placeholder="Add a new task..." />
-            <button id="add-task-btn">Add Task</button>
+            <input type="text" id="new-task" placeholder="Add a new task..." aria-label="Add a new task" />
+            <button id="add-task-btn" aria-label="Add task">Add Task</button>
         </div>
         <ul id="task-list">
             <!-- Dynamically added tasks will go here -->
