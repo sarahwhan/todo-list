@@ -31,7 +31,7 @@ body {
     font-weight: bold;
     color: #5a67d8;
     margin-bottom: 20px;
-    text-transform: capitalize;
+    text-transform: none;
 }
 
 /* Input and button container */
