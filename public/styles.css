@@ -93,14 +93,16 @@ body {
     position: relative;  /* Ensure the trash button stays positioned at the right */
 }
 
-#task-list li:hover {
-    background-color: #edf2f7;
+/* Task text styling */
+#task-list li .task-controls {
+    display: flex;
+    align-items: center; /* Align checkbox and text horizontally */
+    gap: 10px;  /* Adds space between the checkbox and the text */
 }
 
-/* Task text styling */
 #task-list li span {
-    flex: 1;
     text-align: left;  /* Align task text to the left */
+    flex-grow: 1;  /* Ensure text takes up the available space */
 }
 
 #task-list li span.completed {
@@ -151,4 +153,22 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     color: #5a67d8;
+}
+
+/* Make the "Start Pomodoro Timer" button look identical to "Add Task" button */
+#start-pomodoro-btn {
+    background-color: #5a67d8;  /* Same purple color */
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;  /* Rounded corners */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;  /* Align it to the left */
+    margin-top: 10px;
+}
+
+#start-pomodoro-btn:hover {
+    background-color: #4c51bf;  /* Darker purple on hover */
 }
