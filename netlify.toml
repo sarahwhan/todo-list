@@ -1,8 +1,5 @@
-[build]
-  publish = "/"
-
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/api/*"
+  to = "https://todo-list-2fgq.onrender.com/api/tasks"  # Replace with your actual backend URL
   status = 200
   force = true
