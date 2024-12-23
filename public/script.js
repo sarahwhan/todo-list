@@ -70,6 +70,9 @@ function expandTask(index, li) {
         timerDisplay.id = 'pomodoro-timer';
         expandedBox.appendChild(timerDisplay);
 
+        // Prevent task collapse when clicking on the input field
+        timerInput.addEventListener('click', (e) => e.stopPropagation());
+
         li.appendChild(expandedBox);
     }
 }
