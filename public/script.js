@@ -1,7 +1,13 @@
-const apiUrl = '/api';  // Use relative path to API for production
+const apiUrl = 'https://todo-list-2fgq.onrender.com/api/tasks';  // API URL
 
+// Get references to DOM elements
+const taskInput = document.getElementById('new-task');  // Input field for new task
+const taskList = document.getElementById('task-list');  // Task list (ul element)
+const addTaskBtn = document.getElementById('add-task-btn');  // Add task button
+
+// Function to load tasks from the backend and display them
 async function loadTasks() {
-    const response = await fetch(`${apiUrl}/tasks`);  // Fetch tasks from the backend
+    const response = await fetch(apiUrl);  // Fetch tasks from the backend (no need for '/tasks')
     const tasks = await response.json();  // Parse the response to JSON
 
     taskList.innerHTML = '';  // Clear any existing tasks in the list
@@ -24,10 +30,11 @@ async function addTask() {
     const taskText = taskInput.value.trim();
     if (!taskText) return;  // If the task input is empty, do nothing
 
-    await fetch(`${apiUrl}/tasks`, {
+    // Send the new task to the backend
+    await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ task: taskText })  // Send the task content to the backend
+        body: JSON.stringify({ task: taskText })
     });
 
     taskInput.value = '';  // Clear the task input field
@@ -36,7 +43,7 @@ async function addTask() {
 
 // Function to delete a task
 async function deleteTask(index) {
-    await fetch(`${apiUrl}/tasks/${index}`, {
+    await fetch(`${apiUrl}/${index}`, {
         method: 'DELETE'  // Send a DELETE request to remove the task
     });
     loadTasks();  // Reload tasks after deletion to reflect changes
