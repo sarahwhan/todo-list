@@ -1,29 +1,124 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset styles */
+* {
     margin: 0;
     padding: 0;
-    background: #f0f0f0;
+    box-sizing: border-box;
 }
-#app {
-    max-width: 600px;
-    margin: 50px auto;
+
+/* Body styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container styling */
+.container {
+    background: #ffffff;
+    border-radius: 12px;
     padding: 20px;
-    background: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-input, button {
-    padding: 10px;
-    margin: 5px 0;
     width: 100%;
+    max-width: 400px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
-ul {
-    list-style: none;
-    padding: 0;
+
+/* Header styling */
+.header {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #5a67d8;
+    margin-bottom: 20px;
+    text-transform: capitalize;
 }
-li {
+
+/* Input and button container */
+.input-container {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.task-input {
+    flex: 1;
     padding: 10px;
-    background: #eee;
-    margin-bottom: 5px;
+    font-size: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.task-input:focus {
+    border-color: #5a67d8;
+    box-shadow: 0 0 5px rgba(90, 103, 216, 0.5);
+}
+
+.add-btn {
+    background-color: #5a67d8;
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: #4c51bf;
+}
+
+/* Task list styling */
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.task-list li:hover {
+    background-color: #edf2f7;
+}
+
+.task-list li span {
+    flex: 1;
+    text-align: left;
+}
+
+/* Delete button styling */
+.delete-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: #e53e3e;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+    color: #c53030;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+        width: 90%;
+    }
 }
