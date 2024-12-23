@@ -83,20 +83,21 @@ body {
 
 #task-list li {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;  /* Stack items vertically */
     background: #f9fafb;
     border: 1px solid #d1d5db;
     border-radius: 8px;
     padding: 10px;
     margin-bottom: 10px;
     transition: all 0.3s ease;
+    position: relative;  /* Ensure the trash button stays positioned at the right */
 }
 
 #task-list li:hover {
     background-color: #edf2f7;
 }
 
+/* Task text styling */
 #task-list li span {
     flex: 1;
     text-align: left;
@@ -114,6 +115,9 @@ body {
     font-size: 1.2rem;
     color: #e53e3e;
     cursor: pointer;
+    position: absolute;  /* Position the trash button to the right */
+    right: 10px;
+    top: 10px;  /* Adjusted positioning */
     transition: all 0.3s ease;
 }
 
@@ -147,11 +151,4 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     color: #5a67d8;
-}
-
-/* Ensure the button is placed to the right */
-.task-controls {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
 }
