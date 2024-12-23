@@ -3,7 +3,7 @@ const apiUrl = 'https://todo-list-2fgq.onrender.com/api/tasks';  // Backend API 
 // Function to load tasks from the backend API
 async function loadTasks() {
     const response = await fetch(apiUrl);
-    const tasks = await response.json();  // This should now return an array of task objects
+    const tasks = await response.json();
 
     const taskList = document.getElementById('task-list');
     taskList.innerHTML = '';
@@ -21,9 +21,16 @@ async function loadTasks() {
 
         // Task text
         const taskText = document.createElement('span');
-        taskText.textContent = task.task;  // Now this should work correctly
-        if (task.completed) taskText.classList.add('completed');  // Mark as completed if necessary
+        taskText.textContent = task.task;
+        if (task.completed) taskText.classList.add('completed'); // Add 'completed' class if task is marked
         li.appendChild(taskText);
+
+        // Expand button for showing Pomodoro timer
+        const expandBtn = document.createElement('button');
+        expandBtn.textContent = '🔽';
+        expandBtn.className = 'expand-btn';
+        expandBtn.addEventListener('click', () => expandTask(index, li));
+        li.appendChild(expandBtn);
 
         // Delete button to remove task
         const deleteBtn = document.createElement('button');
@@ -34,6 +41,63 @@ async function loadTasks() {
 
         taskList.appendChild(li);
     });
+}
+
+// Function to expand a task and show Pomodoro timer
+function expandTask(index, li) {
+    // Check if task is already expanded
+    if (li.querySelector('.expanded-task')) {
+        li.querySelector('.expanded-task').remove();
+    } else {
+        const expandedBox = document.createElement('div');
+        expandedBox.className = 'expanded-task';
+
+        // Timer input field
+        const timerInput = document.createElement('input');
+        timerInput.id = 'timer-input';
+        timerInput.type = 'number';
+        timerInput.placeholder = 'Enter time in minutes';
+        expandedBox.appendChild(timerInput);
+
+        // Start Pomodoro button
+        const startBtn = document.createElement('button');
+        startBtn.id = 'start-timer-btn';
+        startBtn.textContent = 'Start Pomodoro Timer';
+        startBtn.addEventListener('click', () => startPomodoroTimer(timerInput.value, expandedBox));
+        expandedBox.appendChild(startBtn);
+
+        // Timer display
+        const timerDisplay = document.createElement('div');
+        timerDisplay.id = 'pomodoro-timer';
+        expandedBox.appendChild(timerDisplay);
+
+        li.appendChild(expandedBox);
+    }
+}
+
+// Function to start the Pomodoro timer
+function startPomodoroTimer(minutes, expandedBox) {
+    if (!minutes || minutes <= 0) {
+        alert('Please enter a valid time.');
+        return;
+    }
+
+    let timeRemaining = minutes * 60;
+    const timerDisplay = expandedBox.querySelector('#pomodoro-timer');
+
+    const interval = setInterval(() => {
+        const minutesLeft = Math.floor(timeRemaining / 60);
+        const secondsLeft = timeRemaining % 60;
+
+        timerDisplay.textContent = `${minutesLeft}:${secondsLeft.toString().padStart(2, '0')}`;
+
+        if (timeRemaining <= 0) {
+            clearInterval(interval);
+            alert('Pomodoro session completed!');
+        }
+
+        timeRemaining--;
+    }, 1000);
 }
 
 // Function to add a new task

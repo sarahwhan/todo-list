@@ -23,7 +23,6 @@ body {
     padding: 20px;
     width: 100%;
     max-width: 400px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
@@ -32,7 +31,7 @@ body {
     font-size: 2.2rem;
     font-weight: bold;
     color: #5a67d8;
-    margin-bottom: 40px;  /* Increased margin to add more space between header and task bar */
+    margin-bottom: 30px;
     text-transform: capitalize;
 }
 
@@ -40,7 +39,7 @@ body {
 .input-container {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     gap: 10px;
 }
 
@@ -91,11 +90,7 @@ body {
     padding: 10px;
     margin-bottom: 10px;
     transition: all 0.3s ease;
-}
-
-/* Increased space between checkbox and task name */
-#task-list li input[type="checkbox"] {
-    margin-right: 15px;  /* Increased the margin between the checkbox and the task name */
+    cursor: pointer;
 }
 
 #task-list li:hover {
@@ -105,11 +100,6 @@ body {
 #task-list li span {
     flex: 1;
     text-align: left;
-}
-
-#task-list li span.completed {
-    text-decoration: line-through;
-    color: #a0aec0;
 }
 
 /* Delete button styling */
@@ -126,6 +116,43 @@ body {
     color: #c53030;
 }
 
+/* Expanded task box styling */
+.expanded-task {
+    background-color: #f0f4f8;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+/* Timer styling */
+#pomodoro-timer {
+    font-size: 2rem;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+#timer-input {
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+}
+
+#start-timer-btn {
+    background-color: #5a67d8;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#start-timer-btn:hover {
+    background-color: #4c51bf;
+}
+
+/* Responsive styles */
 @media (max-width: 600px) {
     .container {
         padding: 15px;
