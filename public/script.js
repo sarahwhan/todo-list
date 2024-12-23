@@ -64,9 +64,9 @@ function expandTask(index, li) {
         timerInput.placeholder = 'Enter time in minutes';
         expandedBox.appendChild(timerInput);
 
-        // Start Pomodoro button
+        // Start Pomodoro button (corrected ID)
         const startBtn = document.createElement('button');
-        startBtn.id = 'start-timer-btn';
+        startBtn.id = 'start-pomodoro-btn';  // Corrected ID here
         startBtn.textContent = 'Start Pomodoro Timer';
         startBtn.addEventListener('click', (e) => e.stopPropagation());
         startBtn.addEventListener('click', () => startPomodoroTimer(timerInput.value, expandedBox));

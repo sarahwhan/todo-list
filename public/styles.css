@@ -127,48 +127,38 @@ body {
     color: #c53030;
 }
 
-/* Expanded task box */
+/* Expanded task box styling */
 .expanded-task {
-    margin-top: 15px;
+    background: #f7fafc;
     padding: 15px;
-    background-color: #edf2f7;
     border-radius: 8px;
-    border: 1px solid #d1d5db;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-/* Timer input styling */
-#timer-input {
-    padding: 8px;
-    font-size: 1rem;
-    border-radius: 8px;
-    border: 1px solid #d1d5db;
-    outline: none;
-}
-
-/* Timer display styling */
-#pomodoro-timer {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #5a67d8;
-}
-
-/* Make the "Start Pomodoro Timer" button look identical to "Add Task" button */
+/* Timer input and start button styling */
 #start-pomodoro-btn {
-    background-color: #5a67d8;  /* Same purple color */
+    background-color: #5a67d8;
     color: #ffffff;
     font-size: 1rem;
     padding: 10px 15px;
     border: none;
-    border-radius: 8px;  /* Rounded corners */
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
-    align-self: flex-start;  /* Align it to the left */
+    align-self: flex-start;
     margin-top: 10px;
 }
 
 #start-pomodoro-btn:hover {
-    background-color: #4c51bf;  /* Darker purple on hover */
+    background-color: #4c51bf;
+}
+
+#pomodoro-timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4a5568;
+    text-align: center;
 }
