@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Todo List</title>
+    <title>Modern To-Do List</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1 class="header">Todo List</h1>
+        <h1>My To-Do List</h1>
         <div class="input-container">
-            <input type="text" id="new-task" placeholder="Add a new task" class="task-input">
-            <button id="add-task-btn" class="add-btn">Add</button>
+            <input type="text" id="new-task" placeholder="Add a new task..." /> <!-- Fixed ID to match JS -->
+            <button id="add-task-btn">Add Task</button> <!-- Button to trigger add task -->
         </div>
-        <ul id="task-list" class="task-list"></ul>
+        <ul id="task-list"></ul> <!-- List of tasks -->
     </div>
     <script src="script.js"></script>
 </body>

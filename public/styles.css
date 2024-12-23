@@ -44,7 +44,7 @@ body {
     gap: 10px;
 }
 
-.task-input {
+#new-task {
     flex: 1;
     padding: 10px;
     font-size: 1rem;
@@ -54,12 +54,12 @@ body {
     transition: all 0.3s ease;
 }
 
-.task-input:focus {
+#new-task:focus {
     border-color: #5a67d8;
     box-shadow: 0 0 5px rgba(90, 103, 216, 0.5);
 }
 
-.add-btn {
+#add-task-btn {
     background-color: #5a67d8;
     color: #ffffff;
     font-size: 1rem;
@@ -70,18 +70,18 @@ body {
     transition: all 0.3s ease;
 }
 
-.add-btn:hover {
+#add-task-btn:hover {
     background-color: #4c51bf;
 }
 
 /* Task list styling */
-.task-list {
+#task-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.task-list li {
+#task-list li {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -93,13 +93,18 @@ body {
     transition: all 0.3s ease;
 }
 
-.task-list li:hover {
+#task-list li:hover {
     background-color: #edf2f7;
 }
 
-.task-list li span {
+#task-list li span {
     flex: 1;
     text-align: left;
+}
+
+#task-list li span.completed {
+    text-decoration: line-through;
+    color: #a0aec0;
 }
 
 /* Delete button styling */
