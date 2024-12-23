@@ -2,15 +2,13 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-
-// Use the port from the environment, default to 3000 for local development
 const port = process.env.PORT || 3000;
 
-// In-memory task storage
+// In-memory task storage (replace with a database for production)
 let tasks = [];
 
 // Serve static files (frontend)
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); // Serve frontend files from the 'public' directory
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -20,7 +18,7 @@ app.get('/api/tasks', (req, res) => {
     res.json(tasks);
 });
 
-// API endpoint to add a task
+// API endpoint to add a new task
 app.post('/api/tasks', (req, res) => {
     const { task } = req.body;
     if (task) {
@@ -42,7 +40,12 @@ app.delete('/api/tasks/:index', (req, res) => {
     }
 });
 
-// Start the server and listen on the dynamic port
+// Catch-all route to serve the frontend index.html for non-API requests
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Start the server
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });

@@ -1,32 +1,21 @@
-// Define the base API URL
-const apiUrl = '/api'; // Use the relative path for production (Render will handle it)
+const apiUrl = '/api';  // Use relative path to API for production
 
-// You can change this if you're testing locally
-// const apiUrl = 'http://localhost:3000/api'; // Uncomment for local testing
-
-const taskInput = document.getElementById('new-task');
-const taskList = document.getElementById('task-list');
-const addTaskBtn = document.getElementById('add-task-btn');
-
-// Function to load tasks from the backend and display them
 async function loadTasks() {
     const response = await fetch(`${apiUrl}/tasks`);  // Fetch tasks from the backend
     const tasks = await response.json();  // Parse the response to JSON
 
     taskList.innerHTML = '';  // Clear any existing tasks in the list
 
-    // Loop through each task and create list items for them
     tasks.forEach((task, index) => {
         const li = document.createElement('li');
         li.textContent = task;
 
-        // Create a delete button for each task
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'Delete';
-        deleteBtn.addEventListener('click', () => deleteTask(index));  // Link delete function
+        deleteBtn.addEventListener('click', () => deleteTask(index));
 
-        li.appendChild(deleteBtn);  // Append the delete button to the list item
-        taskList.appendChild(li);  // Append the list item to the task list
+        li.appendChild(deleteBtn);
+        taskList.appendChild(li);
     });
 }
 
