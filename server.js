@@ -1,11 +1,13 @@
 const express = require('express');
 const path = require('path');
-
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 10000;
 
 // In-memory task storage (replace with a database for production)
 let tasks = [];
+
+app.use(cors());  // Enable CORS for all origins
 
 // Serve static files (frontend)
 app.use(express.static(path.join(__dirname, 'public'))); // Serve frontend files from the 'public' directory
