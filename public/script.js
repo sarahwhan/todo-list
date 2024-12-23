@@ -91,6 +91,10 @@ function startPomodoroTimer(minutes, expandedBox) {
         return;
     }
 
+    // Disable the "Start Pomodoro Timer" button
+    const startBtn = expandedBox.querySelector('#start-pomodoro-btn');
+    startBtn.style.display = 'none';  // Hide the button after it's clicked
+
     let timeRemaining = minutes * 60;
     const timerDisplay = expandedBox.querySelector('#pomodoro-timer');
 
@@ -108,6 +112,7 @@ function startPomodoroTimer(minutes, expandedBox) {
         timeRemaining--;
     }, 1000);
 }
+
 
 // Function to add a new task
 async function addTask() {
