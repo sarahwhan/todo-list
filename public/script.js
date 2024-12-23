@@ -56,7 +56,8 @@ function expandTask(index, li) {
     } else {
         const expandedBox = document.createElement('div');
         expandedBox.className = 'expanded-task';
-
+        expandedBox.addEventListener('click', (e) => e.stopPropagation());
+        
         // Timer input field
         const timerInput = document.createElement('input');
         timerInput.id = 'timer-input';
@@ -85,18 +86,21 @@ function expandTask(index, li) {
         const pauseBtn = document.createElement('button');
         pauseBtn.id = 'pause-btn';
         pauseBtn.textContent = 'Pause';
+        pauseBtn.addEventListener('click', (e) => e.stopPropagation());
         pauseBtn.addEventListener('click', () => pauseTimer());
         controlBtnContainer.appendChild(pauseBtn);
 
         const playBtn = document.createElement('button');
         playBtn.id = 'play-btn';
         playBtn.textContent = 'Play';
+        playBtn.addEventListener('click', (e) => e.stopPropagation());
         playBtn.addEventListener('click', () => resumeTimer());
         controlBtnContainer.appendChild(playBtn);
 
         const stopBtn = document.createElement('button');
         stopBtn.id = 'stop-btn';
         stopBtn.textContent = 'Stop';
+        stopBtn.addEventListener('click', (e) => e.stopPropagation());
         stopBtn.addEventListener('click', () => stopTimer(expandedBox));
         controlBtnContainer.appendChild(stopBtn);
 
