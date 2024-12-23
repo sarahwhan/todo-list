@@ -100,7 +100,7 @@ body {
 /* Task text styling */
 #task-list li span {
     flex: 1;
-    text-align: left;
+    text-align: left;  /* Align task text to the left */
 }
 
 #task-list li span.completed {
