@@ -57,7 +57,7 @@ function expandTask(index, li) {
         const expandedBox = document.createElement('div');
         expandedBox.className = 'expanded-task';
         expandedBox.addEventListener('click', (e) => e.stopPropagation());
-        
+
         // Timer input field
         const timerInput = document.createElement('input');
         timerInput.id = 'timer-input';
@@ -148,12 +148,35 @@ function startPomodoroTimer(minutes, expandedBox) {
 // Function to pause the timer
 function pauseTimer() {
     isPaused = true;
+
+    // Disable the pause button, change text to "Paused", and grey it out
+    const pauseBtn = document.getElementById('pause-btn');
+    pauseBtn.disabled = true;
+    pauseBtn.textContent = 'Paused';
+    pauseBtn.style.backgroundColor = '#e2e8f0';  // Greyed out color for paused button
+
+    // Enable the play button to allow resuming
+    const playBtn = document.getElementById('play-btn');
+    playBtn.disabled = false;
+    playBtn.style.backgroundColor = '#5a67d8'; // Restore normal color for play button
 }
 
 // Function to resume the timer
 function resumeTimer() {
     isPaused = false;
+
+    // Enable the pause button again, change text back to "Pause"
+    const pauseBtn = document.getElementById('pause-btn');
+    pauseBtn.disabled = false;
+    pauseBtn.textContent = 'Pause';
+    pauseBtn.style.backgroundColor = '#5a67d8';  // Restore normal color for pause button
+
+    // Disable the play button and grey it out
+    const playBtn = document.getElementById('play-btn');
+    playBtn.disabled = true;
+    playBtn.style.backgroundColor = '#e2e8f0'; // Greyed out color for play button
 }
+
 
 // Function to stop the timer
 function stopTimer(expandedBox) {
