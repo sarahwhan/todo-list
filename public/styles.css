@@ -32,7 +32,7 @@ body {
     font-size: 2.2rem;
     font-weight: bold;
     color: #5a67d8;
-    margin-bottom: 20px;
+    margin-bottom: 40px;  /* Increased margin to add more space between header and task bar */
     text-transform: capitalize;
 }
 
@@ -91,6 +91,11 @@ body {
     padding: 10px;
     margin-bottom: 10px;
     transition: all 0.3s ease;
+}
+
+/* Increased space between checkbox and task name */
+#task-list li input[type="checkbox"] {
+    margin-right: 15px;  /* Increased the margin between the checkbox and the task name */
 }
 
 #task-list li:hover {
