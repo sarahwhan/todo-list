@@ -62,6 +62,7 @@ function expandTask(index, li) {
         const startBtn = document.createElement('button');
         startBtn.id = 'start-timer-btn';
         startBtn.textContent = 'Start Pomodoro Timer';
+        startBtn.addEventListener('click', (e) => e.stopPropagation());
         startBtn.addEventListener('click', () => startPomodoroTimer(timerInput.value, expandedBox));
         expandedBox.appendChild(startBtn);
 
