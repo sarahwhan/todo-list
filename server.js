@@ -1,19 +1,12 @@
-document.getElementById('add-task-btn').addEventListener('click', () => {
-    const taskInput = document.getElementById('new-task');
-    const taskText = taskInput.value.trim();
+const express = require('express');
+const path = require('path');
 
-    if (taskText) {
-        const taskList = document.getElementById('task-list');
-        const li = document.createElement('li');
-        li.textContent = taskText;
+const app = express();
+const port = process.env.PORT || 3000;
 
-        const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = 'Delete';
-        deleteBtn.addEventListener('click', () => li.remove());
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
 
-        li.appendChild(deleteBtn);
-        taskList.appendChild(li);
-
-        taskInput.value = '';
-    }
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
 });
