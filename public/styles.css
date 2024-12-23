@@ -22,7 +22,7 @@ body {
     border-radius: 12px;
     padding: 20px;
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;  /* Increased width */
     text-align: center;
 }
 
@@ -102,26 +102,13 @@ body {
     text-align: left;
 }
 
-/* Delete button styling */
-.delete-btn {
-    background-color: transparent;
-    border: none;
-    font-size: 1.2rem;
-    color: #e53e3e;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.delete-btn:hover {
-    color: #c53030;
-}
-
 /* Expanded task box styling */
 .expanded-task {
     background-color: #f0f4f8;
     padding: 20px;
     border-radius: 12px;
     margin-top: 10px;
+    text-align: left;  /* Aligning timer section to the left */
 }
 
 /* Timer styling */

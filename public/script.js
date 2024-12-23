@@ -25,18 +25,17 @@ async function loadTasks() {
         if (task.completed) taskText.classList.add('completed'); // Add 'completed' class if task is marked
         li.appendChild(taskText);
 
-        // Expand button for showing Pomodoro timer
-        const expandBtn = document.createElement('button');
-        expandBtn.textContent = '🔽';
-        expandBtn.className = 'expand-btn';
-        expandBtn.addEventListener('click', () => expandTask(index, li));
-        li.appendChild(expandBtn);
+        // Expand the task when clicked
+        li.addEventListener('click', () => expandTask(index, li));
 
         // Delete button to remove task
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = '🗑️';
         deleteBtn.className = 'delete-btn';
-        deleteBtn.addEventListener('click', () => deleteTask(index));
+        deleteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();  // Prevent expanding when deleting
+            deleteTask(index);
+        });
         li.appendChild(deleteBtn);
 
         taskList.appendChild(li);
