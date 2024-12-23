@@ -18,12 +18,10 @@ body {
 
 /* Container styling */
 .container {
-    background: #ffffff;
     border-radius: 12px;
     padding: 20px;
     width: 100%;
     max-width: 500px; /* Increased width */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
