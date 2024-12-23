@@ -64,11 +64,10 @@ function expandTask(index, li) {
         timerInput.placeholder = 'Enter time in minutes';
         expandedBox.appendChild(timerInput);
 
-        // Start Pomodoro button (corrected ID)
+        // Start Pomodoro button
         const startBtn = document.createElement('button');
-        startBtn.id = 'start-pomodoro-btn';  // Corrected ID here
+        startBtn.id = 'start-pomodoro-btn';
         startBtn.textContent = 'Start Pomodoro Timer';
-        startBtn.addEventListener('click', (e) => e.stopPropagation());
         startBtn.addEventListener('click', () => startPomodoroTimer(timerInput.value, expandedBox));
         expandedBox.appendChild(startBtn);
 
@@ -77,12 +76,38 @@ function expandTask(index, li) {
         timerDisplay.id = 'pomodoro-timer';
         expandedBox.appendChild(timerDisplay);
 
-        // Prevent task collapse when clicking on the input field
-        timerInput.addEventListener('click', (e) => e.stopPropagation());
+        // Timer control buttons (Pause, Play, Stop)
+        const controlBtnContainer = document.createElement('div');
+        controlBtnContainer.className = 'timer-controls';
+
+        const pauseBtn = document.createElement('button');
+        pauseBtn.id = 'pause-btn';
+        pauseBtn.textContent = 'Pause';
+        pauseBtn.addEventListener('click', () => pauseTimer());
+        controlBtnContainer.appendChild(pauseBtn);
+
+        const playBtn = document.createElement('button');
+        playBtn.id = 'play-btn';
+        playBtn.textContent = 'Play';
+        playBtn.addEventListener('click', () => resumeTimer());
+        controlBtnContainer.appendChild(playBtn);
+
+        const stopBtn = document.createElement('button');
+        stopBtn.id = 'stop-btn';
+        stopBtn.textContent = 'Stop';
+        stopBtn.addEventListener('click', () => stopTimer(expandedBox));
+        controlBtnContainer.appendChild(stopBtn);
+
+        expandedBox.appendChild(controlBtnContainer);
 
         li.appendChild(expandedBox);
     }
 }
+
+let timerInterval = null;  // To store the setInterval reference
+let timeRemaining = 0;  // To store the remaining time in seconds
+let isPaused = false;  // To track if the timer is paused
+
 
 // Function to start the Pomodoro timer
 function startPomodoroTimer(minutes, expandedBox) {
@@ -91,27 +116,48 @@ function startPomodoroTimer(minutes, expandedBox) {
         return;
     }
 
-    // Disable the "Start Pomodoro Timer" button
-    const startBtn = expandedBox.querySelector('#start-pomodoro-btn');
-    startBtn.style.display = 'none';  // Hide the button after it's clicked
+    timeRemaining = minutes * 60;
+    isPaused = false;
 
-    let timeRemaining = minutes * 60;
     const timerDisplay = expandedBox.querySelector('#pomodoro-timer');
+    const startBtn = expandedBox.querySelector('#start-pomodoro-btn');
+    startBtn.style.display = 'none'; // Hide the start button after it's clicked
 
-    const interval = setInterval(() => {
-        const minutesLeft = Math.floor(timeRemaining / 60);
-        const secondsLeft = timeRemaining % 60;
+    timerInterval = setInterval(() => {
+        if (!isPaused) {
+            const minutesLeft = Math.floor(timeRemaining / 60);
+            const secondsLeft = timeRemaining % 60;
+            timerDisplay.textContent = `${minutesLeft}:${secondsLeft.toString().padStart(2, '0')}`;
 
-        timerDisplay.textContent = `${minutesLeft}:${secondsLeft.toString().padStart(2, '0')}`;
-
-        if (timeRemaining <= 0) {
-            clearInterval(interval);
-            alert('Pomodoro session completed!');
+            if (timeRemaining <= 0) {
+                clearInterval(timerInterval);
+                alert('Pomodoro session completed!');
+                stopTimer(expandedBox);  // Reset after completion
+            }
+            timeRemaining--;
         }
-
-        timeRemaining--;
     }, 1000);
 }
+
+// Function to pause the timer
+function pauseTimer() {
+    isPaused = true;
+}
+
+// Function to resume the timer
+function resumeTimer() {
+    isPaused = false;
+}
+
+// Function to stop the timer
+function stopTimer(expandedBox) {
+    clearInterval(timerInterval);
+    const timerDisplay = expandedBox.querySelector('#pomodoro-timer');
+    timerDisplay.textContent = '00:00';  // Reset timer display
+    const startBtn = expandedBox.querySelector('#start-pomodoro-btn');
+    startBtn.style.display = 'inline-block';  // Show the start button again
+}
+
 
 
 // Function to add a new task
