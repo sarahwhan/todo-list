@@ -11,22 +11,23 @@ async function loadTasks() {
     tasks.forEach((task, index) => {
         const li = document.createElement('li');
         
+        // Create the task control container (for task text and delete button)
+        const taskControls = document.createElement('div');
+        taskControls.className = 'task-controls';
+
         // Checkbox for marking task as complete
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.className = 'task-checkbox';
         checkbox.checked = task.completed || false;
         checkbox.addEventListener('change', () => toggleTaskComplete(index, checkbox.checked));
-        li.appendChild(checkbox);
+        taskControls.appendChild(checkbox);
 
         // Task text
         const taskText = document.createElement('span');
         taskText.textContent = task.task;
         if (task.completed) taskText.classList.add('completed'); // Add 'completed' class if task is marked
-        li.appendChild(taskText);
-
-        // Expand the task when clicked
-        li.addEventListener('click', () => expandTask(index, li));
+        taskControls.appendChild(taskText);
 
         // Delete button to remove task
         const deleteBtn = document.createElement('button');
@@ -36,7 +37,12 @@ async function loadTasks() {
             e.stopPropagation();  // Prevent expanding when deleting
             deleteTask(index);
         });
-        li.appendChild(deleteBtn);
+        taskControls.appendChild(deleteBtn);
+
+        li.appendChild(taskControls);
+
+        // Expand the task when clicked
+        li.addEventListener('click', () => expandTask(index, li));
 
         taskList.appendChild(li);
     });
@@ -62,7 +68,6 @@ function expandTask(index, li) {
         const startBtn = document.createElement('button');
         startBtn.id = 'start-timer-btn';
         startBtn.textContent = 'Start Pomodoro Timer';
-        startBtn.addEventListener('click', (e) => e.stopPropagation());
         startBtn.addEventListener('click', () => startPomodoroTimer(timerInput.value, expandedBox));
         expandedBox.appendChild(startBtn);
 
